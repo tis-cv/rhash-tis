@@ -124,40 +124,10 @@ void rhash_swap_copy_u64_to_str(void* to, const void* from, size_t length);
 void rhash_u32_mem_swap(unsigned* p, int length_in_u32);
 
 /* bswap definitions */
-#if (defined(__GNUC__) && (__GNUC__ >= 4) && (__GNUC__ > 4 || __GNUC_MINOR__ >= 3)) || \
-    (defined(__clang__) && __has_builtin(__builtin_bswap32) && __has_builtin(__builtin_bswap64))
-/* GCC >= 4.3 or clang */
-# define bswap_32(x) __builtin_bswap32(x)
-# define bswap_64(x) __builtin_bswap64(x)
-#elif (_MSC_VER > 1300) && (defined(CPU_IA32) || defined(CPU_X64)) /* MS VC */
-# define bswap_32(x) _byteswap_ulong((unsigned long)x)
-# define bswap_64(x) _byteswap_uint64((__int64)x)
-#else
-/* fallback to generic bswap definition */
-static RHASH_INLINE uint32_t bswap_32(uint32_t x)
-{
-# if defined(__GNUC__) && defined(CPU_IA32) && !defined(__i386__) && !defined(RHASH_NO_ASM)
-	__asm("bswap\t%0" : "=r" (x) : "0" (x)); /* gcc x86 version */
-	return x;
-# else
-	x = ((x << 8) & 0xFF00FF00u) | ((x >> 8) & 0x00FF00FFu);
-	return (x >> 16) | (x << 16);
-# endif
-}
-static RHASH_INLINE uint64_t bswap_64(uint64_t x)
-{
-	union {
-		uint64_t ll;
-		uint32_t l[2];
-	} w, r;
-	w.ll = x;
-	r.l[0] = bswap_32(w.l[1]);
-	r.l[1] = bswap_32(w.l[0]);
-	return r.ll;
-}
-#endif /* bswap definitions */
+// XXX - deleted all block
 
 #if IS_BIG_ENDIAN
+// XXX
 /*
 # define be2me_32(x) (x)
 # define be2me_64(x) (x)
@@ -173,6 +143,7 @@ static RHASH_INLINE uint64_t bswap_64(uint64_t x)
 # define me64_to_le_str(to, from, length) rhash_swap_copy_u64_to_str((to), (from), (length))
 
 #else /* IS_BIG_ENDIAN */
+// XXX
 /*
 # define be2me_32(x) bswap_32(x)
 # define be2me_64(x) bswap_64(x)
