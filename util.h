@@ -24,6 +24,9 @@ extern "C" {
 # define NO_ATOMIC_BUILTINS
 #endif
 
+// XXX
+#define HASH_XVERSION=7
+
 /* alignment macros */
 #define DEFAULT_ALIGNMENT 64
 #define ALIGN_SIZE_BY(size, align) (((size) + ((align) - 1)) & ~((align) - 1))
