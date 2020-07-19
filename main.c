@@ -13,6 +13,8 @@
 #include "gost94.h"
 #include "has160.h"
 #include "gost12.h"
+#include "sha256.h"
+#include "sha512.h"
 
 #define ARRAY(name, size) \
     unsigned char name[size]; \
@@ -187,19 +189,54 @@ void gost12_256(void) {
     rhash_gost12_final(&ctx, r);
 }
 
-/*
-void gost12_512(void) {
-    struct gost12_ctx ctx;
+void sha224(void) {
+    struct sha256_ctx ctx;
     ARRAY(msg, 128);
-    unsigned char r[gost12_512_hash_size];
+    unsigned char r[sha224_hash_size];
 
-    rhash_gost12_512_init(&ctx);
+    rhash_sha224_init(&ctx);
     for (size_t i = 0; i < 128; i++) {
-        rhash_gost12_update(&ctx, msg, i);
+        rhash_sha256_update(&ctx, msg, i);
     }
-    rhash_gost12_final(&ctx, r);
+    rhash_sha256_final(&ctx, r);
 }
-*/
+
+
+void sha256(void) {
+    struct sha256_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[sha256_hash_size];
+
+    rhash_sha256_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_sha256_update(&ctx, msg, i);
+    }
+    rhash_sha256_final(&ctx, r);
+}
+
+void sha384(void) {
+    struct sha512_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[sha384_hash_size];
+
+    rhash_sha384_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_sha512_update(&ctx, msg, i);
+    }
+    rhash_sha512_final(&ctx, r);
+}
+
+void sha512(void) {
+    struct sha512_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[sha512_hash_size];
+
+    rhash_sha512_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_sha512_update(&ctx, msg, i);
+    }
+    rhash_sha512_final(&ctx, r);
+}
 
 
 int main(void) {
@@ -216,7 +253,10 @@ int main(void) {
     gost94();
     gost94pro();
     has160();
-    gost12_256();
-    //gost12_512();
+    //gost12_256();
+    sha224();
+    sha256();
+    sha384();
+    sha512();
     return 0;
 }
