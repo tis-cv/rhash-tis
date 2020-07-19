@@ -158,10 +158,12 @@ static RHASH_INLINE uint64_t bswap_64(uint64_t x)
 #endif /* bswap definitions */
 
 #if IS_BIG_ENDIAN
+/*
 # define be2me_32(x) (x)
 # define be2me_64(x) (x)
 # define le2me_32(x) bswap_32(x)
 # define le2me_64(x) bswap_64(x)
+*/
 
 # define be32_copy(to, index, from, length) memcpy((to) + (index), (from), (length))
 # define le32_copy(to, index, from, length) rhash_swap_copy_str_to_u32((to), (index), (from), (length))
@@ -171,10 +173,12 @@ static RHASH_INLINE uint64_t bswap_64(uint64_t x)
 # define me64_to_le_str(to, from, length) rhash_swap_copy_u64_to_str((to), (from), (length))
 
 #else /* IS_BIG_ENDIAN */
+/*
 # define be2me_32(x) bswap_32(x)
 # define be2me_64(x) bswap_64(x)
 # define le2me_32(x) (x)
 # define le2me_64(x) (x)
+*/
 
 # define be32_copy(to, index, from, length) rhash_swap_copy_str_to_u32((to), (index), (from), (length))
 # define le32_copy(to, index, from, length) memcpy((to) + (index), (from), (length))
