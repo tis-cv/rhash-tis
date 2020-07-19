@@ -817,23 +817,12 @@ void rhash_gost12_update(gost12_ctx* ctx, const unsigned char* msg, size_t size)
 		size -= rest;
 		ctx->index = 0;
 	}
-	if (IS_LITTLE_ENDIAN && IS_ALIGNED_64(msg))
-	{
 		while (size >= gost12_block_size)
 		{
 			rhash_gost12_stage2(ctx, (uint64_t*)msg);
 			msg += gost12_block_size;
 			size -= gost12_block_size;
 		}
-	} else {
-		while (size >= gost12_block_size)
-		{
-			le64_copy(ctx->message, 0, msg, gost12_block_size);
-			rhash_gost12_stage2(ctx, ctx->message);
-			msg += gost12_block_size;
-			size -= gost12_block_size;
-		}
-	}
 	if (size)
 	{
 		ctx->index = size;

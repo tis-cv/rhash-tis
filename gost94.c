@@ -362,18 +362,8 @@ void rhash_gost94_update(gost94_ctx* ctx, const unsigned char* msg, size_t size)
 	}
 	while (size >= gost94_block_size) {
 		unsigned* aligned_message_block;
-#if (defined(__GNUC__) && defined(CPU_X64))
-		if (IS_ALIGNED_64(msg)) {
-#else
-		if (IS_ALIGNED_32(msg)) {
-#endif
-			/* the most common case is processing of an already aligned message
-			on little-endian CPU without copying it */
-			aligned_message_block = (unsigned*)msg;
-		} else {
 			memcpy(ctx->message, msg, gost94_block_size);
 			aligned_message_block = (unsigned*)ctx->message;
-		}
 
 		rhash_gost94_compute_sum_and_hash(ctx, aligned_message_block);
 		msg += gost94_block_size;

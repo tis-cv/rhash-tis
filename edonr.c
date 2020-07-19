@@ -425,31 +425,18 @@ void rhash_edonr256_update(edonr_ctx* ctx, const unsigned char* msg, size_t size
 	}
 
 	if (size >= edonr256_block_size) {
-#if defined(CPU_IA32) || defined(CPU_X64)
-		if (1)
-#else
-		if (IS_LITTLE_ENDIAN && IS_ALIGNED_32(msg))
-#endif
-		{
 			/* the most common case is processing a 32-bit aligned message
 			on a little-endian CPU without copying it */
 			size_t count = size / edonr256_block_size;
 			rhash_edonr256_process_block(ctx->u.data256.hash, (unsigned*)msg, count);
 			msg  += edonr256_block_size * count;
 			size -= edonr256_block_size * count;
-		} else {
-			do {
-				le32_copy(ctx->u.data256.message, 0, msg, edonr256_block_size);
-				rhash_edonr256_process_block(ctx->u.data256.hash, ctx->u.data256.message, 1);
-				msg  += edonr256_block_size;
-				size -= edonr256_block_size;
-			} while (size >= edonr256_block_size);
-		}
-	}
+    }
 
 	if (size) {
 		le32_copy(ctx->u.data256.message, 0, msg, size); /* save leftovers */
 	}
+
 }
 
 /**
@@ -518,19 +505,6 @@ void rhash_edonr512_update(edonr_ctx* ctx, const unsigned char* msg, size_t size
 		size -= left;
 	}
 	if (size >= edonr512_block_size) {
-#if defined(CPU_IA32) || defined(CPU_X64)
-		if (1)
-#else
-		if (IS_LITTLE_ENDIAN && IS_ALIGNED_64(msg))
-#endif
-		{
-			/* the most common case is processing a 64-bit aligned message
-			on a little-endian CPU without copying it */
-			size_t count = size / edonr512_block_size;
-			rhash_edonr512_process_block(ctx->u.data512.hash, (uint64_t*)msg, count);
-			msg  += edonr512_block_size * count;
-			size -= edonr512_block_size * count;
-		} else {
 			do {
 				le64_copy(ctx->u.data512.message, 0, msg, edonr512_block_size);
 				rhash_edonr512_process_block(ctx->u.data512.hash, ctx->u.data512.message, 1);
@@ -538,7 +512,7 @@ void rhash_edonr512_update(edonr_ctx* ctx, const unsigned char* msg, size_t size
 				size -= edonr512_block_size;
 			} while (size >= edonr512_block_size);
 		}
-	}
+
 
 	if (size) {
 		le64_copy(ctx->u.data512.message, 0, msg, size); /* save leftovers */

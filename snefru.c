@@ -871,14 +871,8 @@ void rhash_snefru_update(snefru_ctx* ctx, const unsigned char* msg, size_t size)
 	while (size >= data_block_size) {
 		unsigned* aligned_message_block;
 
-		if (IS_LITTLE_ENDIAN && IS_ALIGNED_32(msg)) {
-			/* the most common case is processing of an already aligned message
-			on a little-endian CPU without copying it */
-			aligned_message_block = (unsigned*)msg;
-		} else {
 			memcpy(ctx->buffer, msg, data_block_size);
 			aligned_message_block = (unsigned*)ctx->buffer;
-		}
 		rhash_snefru_process_block(ctx, aligned_message_block);
 
 		msg  += data_block_size;

@@ -177,14 +177,8 @@ void rhash_tiger_update(tiger_ctx* ctx, const unsigned char* msg, size_t size)
 		}
 	}
 	while (size >= tiger_block_size) {
-		if (IS_ALIGNED_64(msg)) {
-			/* the most common case is processing of an already aligned message
-			without copying it */
-			rhash_tiger_process_block(ctx->hash, (uint64_t*)msg);
-		} else {
 			memcpy(ctx->message, msg, tiger_block_size);
 			rhash_tiger_process_block(ctx->hash, (uint64_t*)ctx->message);
-		}
 
 		msg += tiger_block_size;
 		size -= tiger_block_size;

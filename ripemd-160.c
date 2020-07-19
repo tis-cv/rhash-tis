@@ -285,14 +285,8 @@ void rhash_ripemd160_update(ripemd160_ctx* ctx, const unsigned char* msg, size_t
 	}
 	while (size >= ripemd160_block_size) {
 		unsigned* aligned_message_block;
-		if (IS_LITTLE_ENDIAN && IS_ALIGNED_32(msg)) {
-			/* the most common case is processing of an already aligned message
-			on little-endian CPU without copying it */
-			aligned_message_block = (unsigned*)msg;
-		} else {
 			le32_copy(ctx->message, 0, msg, ripemd160_block_size);
 			aligned_message_block = ctx->message;
-		}
 
 		rhash_ripemd160_process_block(ctx->hash, aligned_message_block);
 		msg += ripemd160_block_size;
