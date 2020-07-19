@@ -29,11 +29,11 @@
       #md4 md5 sha1 tiger tth torrent ed2k aich whirlpool
       #gost12_256
       #torrent
-      whirlpool
+      #whirlpool
 
-      # ripemd160 gost94 gost94pro has160 gost12_256 sha224
-      # sha256 sha384 sha512 edonr224 edonr256 edonr384 edonr512
-      # sha3_224 sha3_256 sha3_384 sha3_512 snefru128 snefru256
+      ripemd160 gost94 gost94pro has160 gost12_256 sha224
+      sha256 sha384 sha512 edonr224 edonr256 edonr384 edonr512
+      sha3_224 sha3_256 sha3_384 sha3_512 snefru128 snefru256
    )
    *L
    (make
