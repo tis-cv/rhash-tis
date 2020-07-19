@@ -25,7 +25,7 @@ extern "C" {
 #endif
 
 // XXX
-#define HASH_XVERSION=7
+#define HASH_XVERSION 7
 
 /* alignment macros */
 #define DEFAULT_ALIGNMENT 64
