@@ -11,7 +11,8 @@
 #include "whirlpool.h"
 #include "ripemd-160.h"
 #include "gost94.h"
-
+#include "has160.h"
+#include "gost12.h"
 
 #define ARRAY(name, size) \
     unsigned char name[size]; \
@@ -150,7 +151,6 @@ void gost94(void) {
     rhash_gost94_final(&ctx, r);
 }
 
-
 void gost94pro(void) {
     struct gost94_ctx ctx;
     ARRAY(msg, 128);
@@ -162,6 +162,45 @@ void gost94pro(void) {
     }
     rhash_gost94_final(&ctx, r);
 }
+
+void has160(void) {
+    struct has160_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[has160_hash_size];
+
+    rhash_has160_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_has160_update(&ctx, msg, i);
+    }
+    rhash_has160_final(&ctx, r);
+}
+
+void gost12_256(void) {
+    struct gost12_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[gost12_256_hash_size];
+
+    rhash_gost12_256_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_gost12_update(&ctx, msg, i);
+    }
+    rhash_gost12_final(&ctx, r);
+}
+
+/*
+void gost12_512(void) {
+    struct gost12_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[gost12_512_hash_size];
+
+    rhash_gost12_512_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_gost12_update(&ctx, msg, i);
+    }
+    rhash_gost12_final(&ctx, r);
+}
+*/
+
 
 int main(void) {
     md4();
@@ -176,5 +215,8 @@ int main(void) {
     ripemd160();
     gost94();
     gost94pro();
+    has160();
+    gost12_256();
+    //gost12_512();
     return 0;
 }
