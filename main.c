@@ -6,6 +6,12 @@
 #include "tiger.h"
 #include "tth.h"
 #include "torrent.h"
+#include "ed2k.h"
+#include "aich.h"
+#include "whirlpool.h"
+#include "ripemd-160.h"
+#include "gost94.h"
+
 
 #define ARRAY(name, size) \
     unsigned char name[size]; \
@@ -83,7 +89,79 @@ void torrent(void) {
     bt_final(&ctx, r);
 }
 
+void ed2k(void) {
+    struct ed2k_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[16];
 
+    rhash_ed2k_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_ed2k_update(&ctx, msg, i);
+    }
+    rhash_ed2k_final(&ctx, r);
+}
+
+
+void aich(void) {
+    struct aich_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[20];
+
+    rhash_aich_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_aich_update(&ctx, msg, i);
+    }
+    rhash_aich_final(&ctx, r);
+}
+
+void whirlpool(void) {
+    struct whirlpool_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[64];
+
+    rhash_whirlpool_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_whirlpool_update(&ctx, msg, i);
+    }
+    rhash_whirlpool_final(&ctx, r);
+}
+
+void ripemd160(void) {
+    struct ripemd160_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[ripemd160_hash_size];
+
+    rhash_ripemd160_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_ripemd160_update(&ctx, msg, i);
+    }
+    rhash_ripemd160_final(&ctx, r);
+}
+
+void gost94(void) {
+    struct gost94_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[gost94_hash_length];
+
+    rhash_gost94_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_gost94_update(&ctx, msg, i);
+    }
+    rhash_gost94_final(&ctx, r);
+}
+
+
+void gost94pro(void) {
+    struct gost94_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[gost94_hash_length];
+
+    rhash_gost94_cryptopro_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_gost94_update(&ctx, msg, i);
+    }
+    rhash_gost94_final(&ctx, r);
+}
 
 int main(void) {
     md4();
@@ -92,5 +170,11 @@ int main(void) {
     tiger();
     tth();
     //torrent();
+    ed2k();
+    aich();
+    whirlpool();
+    ripemd160();
+    gost94();
+    gost94pro();
     return 0;
 }
