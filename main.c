@@ -15,6 +15,7 @@
 #include "gost12.h"
 #include "sha256.h"
 #include "sha512.h"
+#include "edonr.h"
 
 #define ARRAY(name, size) \
     unsigned char name[size]; \
@@ -238,6 +239,54 @@ void sha512(void) {
     rhash_sha512_final(&ctx, r);
 }
 
+void edonr224(void) {
+    struct edonr_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[edonr224_hash_size];
+
+    rhash_edonr224_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_edonr256_update(&ctx, msg, i);
+    }
+    rhash_edonr256_final(&ctx, r);
+}
+
+void edonr256(void) {
+    struct edonr_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[edonr256_hash_size];
+
+    rhash_edonr256_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_edonr256_update(&ctx, msg, i);
+    }
+    rhash_edonr256_final(&ctx, r);
+}
+
+void edonr384(void) {
+    struct edonr_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[edonr384_hash_size];
+
+    rhash_edonr384_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_edonr512_update(&ctx, msg, i);
+    }
+    rhash_edonr512_final(&ctx, r);
+}
+
+void edonr512(void) {
+    struct edonr_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[edonr512_hash_size];
+
+    rhash_edonr512_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_edonr512_update(&ctx, msg, i);
+    }
+    rhash_edonr512_final(&ctx, r);
+}
+
 
 int main(void) {
     md4();
@@ -258,5 +307,10 @@ int main(void) {
     sha256();
     sha384();
     sha512();
+    //edonr224();
+    //edonr256();
+    edonr384();
+    edonr512();
+
     return 0;
 }

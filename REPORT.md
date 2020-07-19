@@ -94,3 +94,327 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 make: *** [Makefile:2: all] Error 1
 ```
 
+```
+clang -Wall -Wextra -fsanitize=address,undefined *.c && ./a.out
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7491 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7491: note: pointer points here
+ 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54 55 56 57  58 59 5a 5b 5c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7481 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7481: note: pointer points here
+ 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf748d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf748d: note: pointer points here
+ 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54 55 56 57  58
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7475 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7475: note: pointer points here
+ 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7489 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7489: note: pointer points here
+ 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7485 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7485: note: pointer points here
+ 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf747d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf747d: note: pointer points here
+ 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7479 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7479: note: pointer points here
+ 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7489 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7489: note: pointer points here
+ 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7485 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7485: note: pointer points here
+ 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7479 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7479: note: pointer points here
+ 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7475 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7475: note: pointer points here
+ 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf748d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf748d: note: pointer points here
+ 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54 55 56 57  58
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf747d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf747d: note: pointer points here
+ 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7491 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7491: note: pointer points here
+ 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54 55 56 57  58 59 5a 5b 5c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7481 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7481: note: pointer points here
+ 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7455 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7455: note: pointer points here
+ 01 02 03 04 05 06 07  08 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7459 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7459: note: pointer points here
+ 05 06 07  08 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf745d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf745d: note: pointer points here
+ 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7469 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7469: note: pointer points here
+ 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7461 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7461: note: pointer points here
+ 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7465 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7465: note: pointer points here
+ 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf746d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf746d: note: pointer points here
+ 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7471 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7471: note: pointer points here
+ 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7471 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7471: note: pointer points here
+ 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf746d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf746d: note: pointer points here
+ 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7461 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7461: note: pointer points here
+ 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf745d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf745d: note: pointer points here
+ 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7469 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7469: note: pointer points here
+ 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7465 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7465: note: pointer points here
+ 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7459 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7459: note: pointer points here
+ 05 06 07  08 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:314:3: runtime error: load of misaligned address 0x7ffc49cf7455 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7455: note: pointer points here
+ 01 02 03 04 05 06 07  08 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:314:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7475 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7475: note: pointer points here
+ 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7479 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7479: note: pointer points here
+ 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf747d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf747d: note: pointer points here
+ 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7489 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7489: note: pointer points here
+ 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7481 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7481: note: pointer points here
+ 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7485 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7485: note: pointer points here
+ 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf748d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf748d: note: pointer points here
+ 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54 55 56 57  58
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7491 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7491: note: pointer points here
+ 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54 55 56 57  58 59 5a 5b 5c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7491 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7491: note: pointer points here
+ 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54 55 56 57  58 59 5a 5b 5c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf748d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf748d: note: pointer points here
+ 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54 55 56 57  58
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7481 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7481: note: pointer points here
+ 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf747d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf747d: note: pointer points here
+ 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7489 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7489: note: pointer points here
+ 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50 51 52 53 54
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7485 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7485: note: pointer points here
+ 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44 45 46 47  48 49 4a 4b 4c 4d 4e 4f  50
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7479 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7479: note: pointer points here
+ 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40 41 42 43 44
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:317:3: runtime error: load of misaligned address 0x7ffc49cf7475 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7475: note: pointer points here
+ 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c 3d 3e 3f  40
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:317:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7471 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7471: note: pointer points here
+ 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7461 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7461: note: pointer points here
+ 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf746d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf746d: note: pointer points here
+ 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7455 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7455: note: pointer points here
+ 01 02 03 04 05 06 07  08 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7469 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7469: note: pointer points here
+ 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7465 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7465: note: pointer points here
+ 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf745d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf745d: note: pointer points here
+ 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7459 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7459: note: pointer points here
+ 05 06 07  08 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7469 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7469: note: pointer points here
+ 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7465 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7465: note: pointer points here
+ 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7459 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7459: note: pointer points here
+ 05 06 07  08 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7455 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7455: note: pointer points here
+ 01 02 03 04 05 06 07  08 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf746d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf746d: note: pointer points here
+ 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf745d for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf745d: note: pointer points here
+ 09 0a 0b 0c 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7471 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7471: note: pointer points here
+ 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c 2d 2e 2f  30 31 32 33 34 35 36 37  38 39 3a 3b 3c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+edonr.c:338:3: runtime error: load of misaligned address 0x7ffc49cf7461 for type 'const unsigned int', which requires 4 byte alignment
+0x7ffc49cf7461: note: pointer points here
+ 0d 0e 0f  10 11 12 13 14 15 16 17  18 19 1a 1b 1c 1d 1e 1f  20 21 22 23 24 25 26 27  28 29 2a 2b 2c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior edonr.c:338:3 in 
+```
+
