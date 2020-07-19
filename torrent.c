@@ -456,7 +456,7 @@ static void bt_generate_torrent(torrent_ctx* ctx)
 		if (ctx->program_name) {
 			bt_bencode_str(ctx, "10:created by", ctx->program_name);
 		}
-		bt_bencode_int(ctx, "13:creation date", (uint64_t)time(NULL));
+		bt_bencode_int(ctx, "13:creation date", (uint64_t)12345678901234576ULL);
 
 		bt_str_append(ctx, "8:encoding5:UTF-8");
 	}
