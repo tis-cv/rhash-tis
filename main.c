@@ -16,6 +16,8 @@
 #include "sha256.h"
 #include "sha512.h"
 #include "edonr.h"
+#include "sha3.h"
+#include "snefru.h"
 
 #define ARRAY(name, size) \
     unsigned char name[size]; \
@@ -287,6 +289,78 @@ void edonr512(void) {
     rhash_edonr512_final(&ctx, r);
 }
 
+void sha3_224(void) {
+    struct sha3_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[sha3_224_hash_size];
+
+    rhash_sha3_224_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_sha3_update(&ctx, msg, i);
+    }
+    rhash_sha3_final(&ctx, r);
+}
+
+void sha3_256(void) {
+    struct sha3_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[sha3_256_hash_size];
+
+    rhash_sha3_256_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_sha3_update(&ctx, msg, i);
+    }
+    rhash_sha3_final(&ctx, r);
+}
+
+void sha3_384(void) {
+    struct sha3_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[sha3_384_hash_size];
+
+    rhash_sha3_384_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_sha3_update(&ctx, msg, i);
+    }
+    rhash_sha3_final(&ctx, r);
+}
+
+void sha3_512(void) {
+    struct sha3_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[sha3_512_hash_size];
+
+    rhash_sha3_512_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_sha3_update(&ctx, msg, i);
+    }
+    rhash_sha3_final(&ctx, r);
+}
+
+void snefru128(void) {
+    struct snefru_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[snefru128_hash_length];
+
+    rhash_snefru128_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_snefru_update(&ctx, msg, i);
+    }
+    rhash_snefru_final(&ctx, r);
+}
+
+void snefru256(void) {
+    struct snefru_ctx ctx;
+    ARRAY(msg, 128);
+    unsigned char r[snefru256_hash_length];
+
+    rhash_snefru256_init(&ctx);
+    for (size_t i = 0; i < 128; i++) {
+        rhash_snefru_update(&ctx, msg, i);
+    }
+    rhash_snefru_final(&ctx, r);
+}
+
 
 int main(void) {
     md4();
@@ -311,6 +385,11 @@ int main(void) {
     //edonr256();
     edonr384();
     edonr512();
-
+    sha3_224();
+    sha3_256();
+    sha3_384();
+    sha3_512();
+    snefru128();
+    snefru256();
     return 0;
 }
