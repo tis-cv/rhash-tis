@@ -93,6 +93,7 @@ void torrent(void) {
         bt_update(&ctx, msg, i);
     }
     bt_final(&ctx, r);
+    bt_cleanup(&ctx);
 }
 
 void ed2k(void) {
@@ -368,7 +369,7 @@ int main(void) {
     sha1();
     tiger();
     tth();
-    //torrent();
+    torrent();
     ed2k();
     aich();
     whirlpool();
